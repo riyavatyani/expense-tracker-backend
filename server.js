@@ -17,12 +17,16 @@ console.log("OPENAI KEY LOADED ", !!process.env.OPENAI_API_KEY);
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://expense-tracker-frontend-six-brown.vercel.app",
+    ],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
 
 // ✅ Body parser
 app.use(express.json());
